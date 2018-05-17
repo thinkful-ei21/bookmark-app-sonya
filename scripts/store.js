@@ -5,11 +5,17 @@ const store = (function() {
     this.store.push(newBookmark);
   };
 
+  const setError = function (err) {
+    this.error = err;
+  };
+
 
 
   return {
     store: [],
+    error: null,
     addItems,
+    setError,
 
   };
 

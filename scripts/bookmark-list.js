@@ -21,12 +21,12 @@ const bookmarkList = (function() {
         (newBookmark) => {
           store.addItems(newBookmark);
           //render();
-        }//,
-        // (err) => {
-        //   console.log(err);
-        //   store.setError(err);
+        },
+        (err) => {
+           console.log(err);
+           store.setError(err);
           //render();
-        //}
+        }
       );
     });
   };
