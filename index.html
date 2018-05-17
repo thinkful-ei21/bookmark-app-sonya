@@ -20,24 +20,24 @@
       <form id="js-add-item-form">
         <div class="information-input">
           <label for="title-entry">Title</label>
-          <input type="text" name="title-entry" class="js-title-entry" "title-entry" placeholder="A Very Cool Website"><br>
+          <input type="text" name="title-entry" class="js-title-entry title-entry" placeholder="A Very Cool Website"><br>
           <label for="url-entry">Web Address</label>
-          <input type="url" name="url-entry" class="js-url-entry" "url-entry" placeholder="www.averycoolwebsite.com"><br>
+          <input type="url" name="url-entry" class="js-url-entry url-entry" placeholder="www.averycoolwebsite.com"><br>
           <label for="description-entry">Description</label>
-          <input type="text" name="description-entry" class="js-description-entry" "description-entry" placeholder="This is a very cool website!"><br>
+          <input type="text" name="description-entry" class="js-description-entry description-entry" placeholder="This is a very cool website!"><br>
         </div>
         <div class="rating-input">
           <label for="rating-entry">Rating:</label>
           <label for="radio-entry">1</label>
-          <input type="radio" name="rating-entry" class="js-rating-entry" "rating-entry" id="1" value="1">
+          <input type="radio" name="rating-entry" class="js-rating-entry rating-entry" id="1" value="1">
           <label for="radio-entry">2</label>
-          <input type="radio" name="rating-entry" class="js-rating-entry" "rating-entry" id="2" value="2">
+          <input type="radio" name="rating-entry" class="js-rating-entry rating-entry" id="2" value="2">
           <label for="radio-entry">3</label>
-          <input type="radio" name="rating-entry" class="js-rating-entry" "rating-entry" id="3" value="3">
+          <input type="radio" name="rating-entry" class="js-rating-entry rating-entry" id="3" value="3">
           <label for="radio-entry">4</label>
-          <input type="radio" name="rating-entry" class="js-rating-entry" "rating-entry" id="4" value="4">
+          <input type="radio" name="rating-entry" class="js-rating-entry rating-entry" id="4" value="4">
           <label for="radio-entry">5</label>
-          <input type="radio" name="rating-entry" class="js-rating-entry" "rating-entry" id="5" value="5">
+          <input type="radio" name="rating-entry" class="js-rating-entry rating-entry" id="5" value="5">
         </div>
         <div class="submit-form">
           <button type="submit">Add Bookmark</button>
@@ -54,18 +54,34 @@
         </select>
       </div> 
       <ul class="bookmark-list" "js-bookmark-list">
+        <!-- bookmark will look like this when page first loads -->
         <li class="bookmark">
           <p class="title">Bookmark Title</p>
           <span class="rating-info">Rating: #</span><br>
           <form class="item-edit-form">
             <div class="bookmark-controls">
               <label for="show-more-checkbox">Show More</label>
-              <input type="checkbox" name="show-more-checkbox" class="js-show-more-checkbox" "show-more-check-box"><br>
+              <input type="checkbox" name="show-more-checkbox" class="js-show-more-checkbox show-more-check-box"><br>
               <button class="js-bookmark-delete" "bookmark-delete">
                 <span class="button-label">Delete</span>
               </button>
             </div>
         </li>
+        <!--bookmark will look like this when 'Show More' button is clicked-->
+        <li class="bookmark">
+            <p class="title show-more-checked">Bookmark Title</p>
+            <span class="rating-info">Rating: #</span><br>
+            <a href="https://www.averycoolwebsite.com">"https://www.averycoolwebsite.com</a>
+            <p class="bookmark-description">Description</p>
+            <form class="item-edit-form">
+              <div class="bookmark-controls">
+                <label for="show-more-checkbox">Show More</label>
+                <input type="checkbox" name="show-more-checkbox" class="js-show-more-checkbox show-more-check-box"><br>
+                <button class="js-bookmark-delete" "bookmark-delete">
+                  <span class="button-label">Delete</span>
+                </button>
+              </div>
+          </li>
       </ul>
   </div>
   </main>
