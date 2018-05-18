@@ -21,10 +21,13 @@ const bookmarkList = (function() {
   //delete bookmark when delete button is clicked
   function handleDeleteButton() {
     $('.js-bookmark-list').on('click', ('.js-bookmark-delete'), event => {
+      event.preventDefault();
       const id = getIdFromElement(event.currentTarget);
-      const bookmark = getBookmarkInfoFromId(id);
-      store.deleteBookmark(bookmark);
-      render();
+
+      api.deleteBookmark(id, function() {
+        store.deleteBookmark(id);
+        render();
+      });
     });
   }
   
@@ -41,19 +44,11 @@ const bookmarkList = (function() {
 
   //toggles between showing or hiding description and url of bookmark
   // when 'show more' checkbox is checked
-  function addIdToShowMoreArray(id) {
-    store.showMore.push(id);
-  }
-
-  function removeIdFromShowMoreArray(id) {
-    const idIndex = store.showMore.indexOf(id);
-    store.showMore.splice(idIndex, 1);
-  }
-
+  
   function handleShowMoreCheckbox() {
     $('.js-bookmark-list').on('click', '.js-show-more-checkbox', (event) => {
       const id = getIdFromElement(event.currentTarget);
-      addIdToShowMoreArray(id);
+      store.addIdToShowMoreArray(id);
       render();
       
     });
@@ -63,7 +58,7 @@ const bookmarkList = (function() {
     $('.js-bookmark-list').on('click', '.js-show-less-checkbox', (event) => {
       const id = getIdFromElement(event.currentTarget);
       getBookmarkInfoFromId(id);
-      removeIdFromShowMoreArray(id);
+      store.removeIdFromShowMoreArray(id);
       render();
     });
   }
@@ -72,7 +67,7 @@ const bookmarkList = (function() {
   const generateBookmarkElement = function(bookmark) {
    
     let htmlElement = '';
-    htmlElement += ` <li class="bookmark" data-item-id="${bookmark.id}">
+    htmlElement += ` <li class="bookmark box" data-item-id="${bookmark.id}">
     <p class="title">${bookmark.title}</p>`;
     
     if (store.showMore.includes(bookmark.id)) {
@@ -83,7 +78,7 @@ const bookmarkList = (function() {
       <div class="bookmark-controls">
         <label for="show-less-checkbox">Show less</label>
         <input type="checkbox" name="show-less-checkbox" class="js-show-less-checkbox show-less-check-box"><br>
-        <button class="js-bookmark-delete" "bookmark-delete">
+        <button class="js-bookmark-delete bookmark-delete">
           <span class="button-label">Delete</span>
         </button>
       </div>
@@ -94,7 +89,7 @@ const bookmarkList = (function() {
       <div class="bookmark-controls">
         <label for="show-more-checkbox">Show More</label>
         <input type="checkbox" name="show-more-checkbox" class="js-show-more-checkbox show-more-check-box"><br>
-        <button class="js-bookmark-delete" "bookmark-delete">
+        <button class="js-bookmark-delete bookmark-delete">
           <span class="button-label">Delete</span>
         </button>
       </div>

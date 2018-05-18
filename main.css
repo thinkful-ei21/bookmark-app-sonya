@@ -1,1 +1,87 @@
 /* use media queries for responsive design */
+/* use media queries for responsive design */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+}
+/* screen-size < 600px */
+@media only screen and (max-width: 600px) {
+  .resp-font {
+    font-size: 120%;
+  }
+  .title-entry, .url-entry, .description-entry {
+    font-size: 100%;
+}
+  .center {
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+  .submit-form {
+    font-size: 150%;
+  }
+  .submit {
+    font-size: 80%;
+  }
+  select {
+    font-size: 80%;
+  }
+}
+
+/* screen size > 600px*/
+h1, h2 {
+  width: 600px;
+  margin: auto;
+  padding-left: 45px
+}
+
+h1 {
+  position: relative;
+  
+}
+
+.box {
+  border: 1px solid black;
+  
+}
+
+.center {
+  position: relative;
+  width: 500px;
+  margin: auto;
+}
+
+form {
+  padding: 20px
+}
+
+.rating-filter-dropdown {
+  padding: 20px
+}
+
+@media only screen and (max-width: 600px) {
+  .resp-font {
+    font-size: 120%;
+  }
+  .title-entry, .url-entry, .description-entry {
+    font-size: 100%;
+}
+  .center {
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+  .submit-form {
+    font-size: 150%;
+  }
+  .submit {
+    font-size: 80%;
+  }
+  select {
+    font-size: 80%;
+  }
+}

@@ -2,6 +2,9 @@
 const store = (function() {
 
   const addBookmarks = function (newBookmark) {
+    if (!newBookmark.rating) {
+      newBookmark.rating = 1;
+    } 
     this.bookmarks.push(newBookmark);
   };
 
@@ -9,12 +12,21 @@ const store = (function() {
     this.error = err;
   };
 
-  const deleteBookmark = function(bookmark) {
-    const bookmarkIndex = store.bookmarks.indexOf(bookmark);
-    store.bookmarks.splice(bookmarkIndex, 1);
+  const deleteBookmark = function(id) {
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
+  };
+  
+
+  const addIdToShowMoreArray = function(id) {
+    store.showMore.push(id);
   };
 
+  const removeIdFromShowMoreArray = function(id) {
+    const idIndex = store.showMore.indexOf(id);
+    store.showMore.splice(idIndex, 1);
+  };
 
+  
   return {
     bookmarks: [],
     error: null,
@@ -23,6 +35,9 @@ const store = (function() {
     setError,
     deleteBookmark,
     filterRating: 1,
+    addIdToShowMoreArray,
+    removeIdFromShowMoreArray,
+  
     
 
   };
