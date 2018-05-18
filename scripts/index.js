@@ -6,7 +6,7 @@
 $(document).ready(function() {
 
   bookmarkList.bindEventListeners();
-  
+  bookmarkList.render();
   api.getBookmarks(console.log('hi sunny!'));
 }
   

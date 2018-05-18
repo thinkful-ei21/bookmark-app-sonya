@@ -12,7 +12,7 @@ const store = (function() {
 
 
   return {
-    store: [],
+    bookmarks: [{title: 'apples', rating: 'oranges'}],
     error: null,
     addItems,
     setError,
