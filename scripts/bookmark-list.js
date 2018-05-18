@@ -2,15 +2,31 @@
 /* global api store */
 
 const bookmarkList = (function() {
+
+  function getIdFromElement(element) {
+    return element.data('item-id');
+  }
+
+  //these functions render the data in store to the DOM
+  function handleShowMoreCheckbox() {
+    $('.js-bookmark-list').on('click', '.js-show-more-checkbox', (event) => {
+      const id = getIdFromElement(event.currentTarget);
+      console.log('did this work?');
+      console.log(id);
+
+    });
+  }
+
+  
   //translate api error message to be more user friendly
   const generateBookmarkElement = function(bookmark) {
     return ` <li class="bookmark">
-    <p class="title">${bookmark.title}</p>
+    <p class="title data-item-id="${bookmark.id}">${bookmark.title}</p>
     <span class="rating-info">${bookmark.rating}</span><br>
     <form class="item-edit-form">
       <div class="bookmark-controls">
         <label for="show-more-checkbox">Show More</label>
-        <input type="checkbox" name="show-more-checkbox" class="js-show-more-checkbox show-more-check-box"><br>
+        <input type="checkbox" name="show-more-checkbox" data-item-id="${bookmark.id} class="js-show-more-checkbox show-more-check-box"><br>
         <button class="js-bookmark-delete" "bookmark-delete">
           <span class="button-label">Delete</span>
         </button>
@@ -18,24 +34,25 @@ const bookmarkList = (function() {
   </li>`;
   };
 
-  const generateBookmarkString = function(array) {
+
+  function generateBookmarkString(array) {
     return array.map(bookmark => generateBookmarkElement(bookmark)).join('');
   };
 
-  const render = function() {
+  function render() {
     let bookmarkArray = store.bookmarks;
     const bookmarkString = generateBookmarkString(bookmarkArray);
     $('.js-bookmark-list').html(bookmarkString);
     console.log('render ran');
   };
 
-
-  const formValidation = function() {
+//these functions takes new bookmark entries, validates them and sends them to the database
+  function formValidation() {
     return ($('.js-title-entry').val() && $('.js-url-entry').val());
   };
 
 
-  const handleNewBookmarkSubmit = function() {
+  function handleNewBookmarkSubmit() {
     $('#js-add-item-form').submit(function(event) {
       event.preventDefault();
       if (!formValidation(this)) {
@@ -63,14 +80,14 @@ const bookmarkList = (function() {
     });
   };
 
-  const bindEventListeners = function() {
+  function bindEventListeners() {
     //calls all event listeners on the page when it loads
     handleNewBookmarkSubmit();
     // handleDeleteButton();
-    // handleShowMoreCheckbox();
+    handleShowMoreCheckbox();
     // handleFilterSelector();
 
-  };
+  }
 
   return{
     render,
