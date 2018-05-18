@@ -1,8 +1,8 @@
 'use strict';
 const store = (function() {
 
-  const addItems = function (newBookmark) {
-    this.store.push(newBookmark);
+  const addBookmarks = function (newBookmark) {
+    this.bookmarks.push(newBookmark);
   };
 
   const setError = function (err) {
@@ -12,9 +12,9 @@ const store = (function() {
 
 
   return {
-    bookmarks: [{title: 'apples', rating: 'oranges'}],
+    bookmarks: [],
     error: null,
-    addItems,
+    addBookmarks,
     setError,
 
   };
