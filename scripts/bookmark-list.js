@@ -6,13 +6,16 @@ const bookmarkList = (function() {
   function handleFilterSelector() {
     $('.js-filter-by-min-rating').on('change', function() {
       const ratingValue = $('.js-filter-by-min-rating option:selected').text();
-      console.log(ratingValue);
-      //render();
+      store.filterRating = ratingValue;
+      render();
     });
-    
   }
-  
 
+  function filterBookmarksByRating(bookmarksArray,rating) {
+    return bookmarksArray.filter(bookmark => {
+      return bookmark.rating >= rating;
+    });
+  }
 
 
   //delete bookmark when delete button is clicked
@@ -109,8 +112,16 @@ const bookmarkList = (function() {
 
   function render() {
     let bookmarkArray = store.bookmarks;
-    const bookmarkString = generateBookmarkString(bookmarkArray);
+    let bookmarkString = '';
+    if( store.filterRating !== 1) {
+      const ratingNum = parseInt(store.filterRating, 10);
+      const filteredArray = filterBookmarksByRating(bookmarkArray, ratingNum);
+      bookmarkString += generateBookmarkString(filteredArray);
+    } else {
+      bookmarkString += generateBookmarkString(bookmarkArray);
+    }
     $('.js-bookmark-list').html(bookmarkString);
+
     console.log('render ran');
   }
 
@@ -161,6 +172,7 @@ const bookmarkList = (function() {
   return{
     render,
     bindEventListeners,
+    filterBookmarksByRating,
   };
 
 }());
