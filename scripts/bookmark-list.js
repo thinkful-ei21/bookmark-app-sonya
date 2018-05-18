@@ -3,6 +3,17 @@
 
 const bookmarkList = (function() {
 
+  //delete bookmark when delete button is clicked
+  function handleDeleteButton() {
+    $('.js-bookmark-list').on('click', ('.js-bookmark-delete'), event => {
+      const id = getIdFromElement(event.currentTarget);
+      const bookmark = getBookmarkInfoFromId(id);
+      store.deleteBookmark(bookmark);
+      render();
+    });
+  }
+  
+  //find an bookmark info by it's id
   function getIdFromElement(element) {
     return $(element)
       .closest('.bookmark')
@@ -13,6 +24,8 @@ const bookmarkList = (function() {
     return store.bookmarks.find(bookmark => bookmark.id === id);
   }
 
+  //toggles between showing and hiding description and url of bookmark
+  // when show more checkbox is checked
   function addIdToShowMoreArray(id) {
     store.showMore.push(id);
   }
@@ -25,7 +38,6 @@ const bookmarkList = (function() {
   function handleShowMoreCheckbox() {
     $('.js-bookmark-list').on('click', '.js-show-more-checkbox', (event) => {
       const id = getIdFromElement(event.currentTarget);
-      getBookmarkInfoFromId(id);
       addIdToShowMoreArray(id);
       render();
       
@@ -41,7 +53,7 @@ const bookmarkList = (function() {
     });
   }
   
-
+  //renders the page
   const generateBookmarkElement = function(bookmark) {
    
     let htmlElement = '';
@@ -90,7 +102,7 @@ const bookmarkList = (function() {
     console.log('render ran');
   }
 
-  //these functions takes new bookmark entries, validates them and sends them to the database
+  //validates new bookmark entries and adds them to the database
   function formValidation() {
     return ($('.js-title-entry').val() && $('.js-url-entry').val());
   }
@@ -111,13 +123,13 @@ const bookmarkList = (function() {
         api.createBookmark(formDataObject, 
           (newBookmark) => {
             store.addBookmarks(newBookmark);
-          render();
+            render();
           },
           (err) => {
             ('.error-container').html('There seems to be a problem with the server.  Please try again.');
             console.log(err);
             store.setError(err);
-          render();
+            render();
           }
         );
       }
@@ -127,7 +139,7 @@ const bookmarkList = (function() {
   function bindEventListeners() {
     //calls all event listeners on the page when it loads
     handleNewBookmarkSubmit();
-    // handleDeleteButton();
+    handleDeleteButton();
     handleShowMoreCheckbox();
     handleShowLessCheckbox();
     // handleFilterSelector();

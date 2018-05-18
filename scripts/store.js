@@ -9,14 +9,19 @@ const store = (function() {
     this.error = err;
   };
 
+  const deleteBookmark = function(bookmark) {
+    const bookmarkIndex = store.bookmarks.indexOf(bookmark);
+    store.bookmarks.splice(bookmarkIndex, 1);
+  };
 
 
   return {
     bookmarks: [],
     error: null,
-    showMore: [],
+    showMore: [''],
     addBookmarks,
     setError,
+    deleteBookmark,
     
 
   };
