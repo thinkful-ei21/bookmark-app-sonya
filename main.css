@@ -33,6 +33,15 @@ body {
 }
 
 /* screen size > 600px*/
+
+ul {
+  list-style-type: none;
+}
+
+header {
+  margin-top: 10px;
+}
+
 h1, h2 {
   width: 600px;
   margin: auto;
@@ -41,7 +50,12 @@ h1, h2 {
 
 h1 {
   position: relative;
+  left: 90px;
   
+}
+
+li {
+  padding: 10px;
 }
 
 .box {
@@ -60,28 +74,7 @@ form {
 }
 
 .rating-filter-dropdown {
-  padding: 20px
+  padding: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-  .resp-font {
-    font-size: 120%;
-  }
-  .title-entry, .url-entry, .description-entry {
-    font-size: 100%;
-}
-  .center {
-  position: relative;
-  width: 300px;
-  margin: auto;
-}
-  .submit-form {
-    font-size: 150%;
-  }
-  .submit {
-    font-size: 80%;
-  }
-  select {
-    font-size: 80%;
-  }
-}
+

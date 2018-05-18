@@ -73,18 +73,18 @@ const bookmarkList = (function() {
     if (store.showMore.includes(bookmark.id)) {
       htmlElement += `<a href="${bookmark.url}">Visit Website</a>
       <p class="bookmark-description">${bookmark.desc}</p>
-      <span class="rating-info">${bookmark.rating}</span><br>
+      <span class="rating-info">Rating: ${bookmark.rating}</span><br>
     <form class="item-edit-form">
       <div class="bookmark-controls">
         <label for="show-less-checkbox">Show less</label>
-        <input type="checkbox" name="show-less-checkbox" class="js-show-less-checkbox show-less-check-box"><br>
+        <input type="checkbox" name="show-less-checkbox" class="js-show-less-checkbox show-less-checkbox"><br>
         <button class="js-bookmark-delete bookmark-delete">
           <span class="button-label">Delete</span>
         </button>
       </div>
   </li>`;
     } else {
-      htmlElement += `<span class="rating-info">${bookmark.rating}</span><br>
+      htmlElement += `<span class="rating-info">Rating: ${bookmark.rating}</span><br>
     <form class="item-edit-form">
       <div class="bookmark-controls">
         <label for="show-more-checkbox">Show More</label>
