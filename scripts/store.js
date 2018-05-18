@@ -14,8 +14,10 @@ const store = (function() {
   return {
     bookmarks: [],
     error: null,
+    showMore: [],
     addBookmarks,
     setError,
+    
 
   };
 
