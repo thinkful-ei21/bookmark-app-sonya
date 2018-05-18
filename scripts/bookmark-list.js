@@ -3,6 +3,18 @@
 
 const bookmarkList = (function() {
 
+  function handleFilterSelector() {
+    $('.js-filter-by-min-rating').on('change', function() {
+      const ratingValue = $('.js-filter-by-min-rating option:selected').text();
+      console.log(ratingValue);
+      //render();
+    });
+    
+  }
+  
+
+
+
   //delete bookmark when delete button is clicked
   function handleDeleteButton() {
     $('.js-bookmark-list').on('click', ('.js-bookmark-delete'), event => {
@@ -13,7 +25,7 @@ const bookmarkList = (function() {
     });
   }
   
-  //find an bookmark info by it's id
+  //find bookmark info by its id
   function getIdFromElement(element) {
     return $(element)
       .closest('.bookmark')
@@ -24,8 +36,8 @@ const bookmarkList = (function() {
     return store.bookmarks.find(bookmark => bookmark.id === id);
   }
 
-  //toggles between showing and hiding description and url of bookmark
-  // when show more checkbox is checked
+  //toggles between showing or hiding description and url of bookmark
+  // when 'show more' checkbox is checked
   function addIdToShowMoreArray(id) {
     store.showMore.push(id);
   }
@@ -142,7 +154,7 @@ const bookmarkList = (function() {
     handleDeleteButton();
     handleShowMoreCheckbox();
     handleShowLessCheckbox();
-    // handleFilterSelector();
+    handleFilterSelector();
 
   }
 
