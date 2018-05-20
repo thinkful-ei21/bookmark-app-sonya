@@ -5,9 +5,12 @@
   padding: 0;
 }
 
+
 body {
   box-sizing: border-box;
-}
+  background-color: hsl(300, 7%, 30%);
+  color: white;
+;}
 /* screen-size < 600px */
 @media only screen and (max-width: 600px) {
   .resp-font {
@@ -32,6 +35,11 @@ body {
   }
 }
 
+input {
+  border-radius: 10%;
+  margin: 10px;
+}
+
 /* screen size > 600px*/
 
 ul {
@@ -39,28 +47,59 @@ ul {
 }
 
 header {
-  margin-top: 10px;
+  margin-top: 20px;
+  
 }
 
 h1, h2 {
   width: 600px;
-  margin: auto;
-  padding-left: 45px
+  margin: 10px auto;
+  padding-left: 45px;
+}
+
+.header {
+  border: 2px soild white;
 }
 
 h1 {
   position: relative;
   left: 90px;
-  
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+h2 {
+  padding-bottom: 20px;
 }
 
 li {
   padding: 10px;
 }
 
-.box {
-  border: 1px solid black;
-  
+label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+select {
+  margin-top: 10px;
+}
+
+
+.teal {
+  background-color: hsla(161, 66%, 33%, 0.82);
+}
+
+button {
+  margin-top: 10px;
+  padding: 7px;
+  border-radius: 10%;
+
+}
+
+button:hover {
+  background-color: orange;
 }
 
 .center {
@@ -69,7 +108,7 @@ li {
   margin: auto;
 }
 
-form {
+#js-add-item-form{
   padding: 20px
 }
 
