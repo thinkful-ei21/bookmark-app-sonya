@@ -67,7 +67,7 @@ const bookmarkList = (function() {
   const generateBookmarkElement = function(bookmark) {
    
     let htmlElement = '';
-    htmlElement += ` <li class="bookmark teal" data-item-id="${bookmark.id}">
+    htmlElement += ` <li class="bookmark" data-item-id="${bookmark.id}">
     <p class="title">${bookmark.title}</p>`;
     
     if (store.showMore.includes(bookmark.id)) {
